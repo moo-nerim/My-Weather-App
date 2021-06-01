@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-const API_KEY = '{YOUR_API_KEY}';
+const API_KEY = '{Unique API key}';
 const queryUrl = (city) => `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
 
 export default class WeatherDetailScreen extends React.Component {
@@ -50,11 +50,12 @@ export default class WeatherDetailScreen extends React.Component {
     }
 
     let celsius = this.state.main.temp - 273.15;
-
     return (
       <View style={styles.container}>
-        <Text>온도: {celsius.toFixed(1)}</Text>
+        <Text style={styles.text}>{city}</Text>
+        <Text style={styles.text}>날씨: {celsius.toFixed(1)} ℃</Text>
       </View>
+      
     );
   }
 }
@@ -64,4 +65,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  text: {
+    fontSize: 30,
+    marginLeft: 20,
+  }
 });
